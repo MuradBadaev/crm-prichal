@@ -1,0 +1,9 @@
+{
+  "name": "crm-prichal",
+  "private": true,
+  "type": "module",
+  "description": "Демо-CRM для кафе «Причал»: заявки, меню, гости, статистика",
+  "dependencies": {
+    "@vercel/blob": "^2.8.0"
+  }
+}

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Причал — CRM</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0E3341">
+  <link rel="icon" href="logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 13.5 6 5h12l2.5 8.5V19a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-5.5Zm0 0H8l1.5 2.5h5L16 13.5h4.5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 4v7a2 2 0 0 0 2 2v7M10 4v7a2 2 0 0 1-2 2M17 20V4c-2 1.5-3 4-3 8h3"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18.5 14.8c1.6.8 2.6 2.5 3 5.2"/></g></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11 11 0 0 0 7.2 7.2l1.4-2.1 4.2 1.6V19a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3 5.5a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-out" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M10 16l-4-4 4-4M6 12h10"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></g></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M3 3l18 18M10.6 5.6A9.8 9.8 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.7M6.6 6.7A16.6 16.6 0 0 0 2.5 12S6 18.5 12 18.5c1.8 0 3.3-.5 4.6-1.3M9.9 10a2.8 2.8 0 0 0 4 4"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M9 7V4.5h6V7M6.5 7l1 13h9l1-13"/></symbol>
+  </svg>
+
+  <!-- Вход -->
+  <section class="login" data-view="login" hidden>
+    <form class="login__card" data-login>
+      <img src="logo.jpg" alt="Причал" width="72" height="72">
+      <h1>Причал · CRM</h1>
+      <p>Заявки, меню и гости кафе в одном месте.</p>
+      <label class="field">
+        <span>Пароль</span>
+        <input type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <p class="form-error" data-login-error role="alert"></p>
+      <button class="btn btn--primary" type="submit">Войти</button>
+    </form>
+  </section>
+
+  <!-- Приложение -->
+  <div class="app" data-view="app" hidden>
+    <aside class="side">
+      <div class="side__brand"><img src="logo.jpg" alt="" width="40" height="40"><div><b>Причал</b><span>CRM</span></div></div>
+      <nav class="side__nav" aria-label="Разделы">
+        <a href="#requests" data-nav="requests"><svg><use href="#i-inbox"/></svg><span>Заявки</span><em data-new-count hidden></em></a>
+        <a href="#menu" data-nav="menu"><svg><use href="#i-menu"/></svg><span>Меню</span></a>
+        <a href="#guests" data-nav="guests"><svg><use href="#i-users"/></svg><span>Гости</span></a>
+        <a href="#stats" data-nav="stats"><svg><use href="#i-chart"/></svg><span>Статистика</span></a>
+      </nav>
+      <div class="side__foot">
+        <a href="https://prichal-chi.vercel.app" target="_blank" rel="noopener"><svg><use href="#i-ext"/></svg>Открыть сайт</a>
+        <button type="button" data-logout><svg><use href="#i-out"/></svg>Выйти</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="demo-bar" data-demo-bar hidden>
+        <span>Сейчас в CRM демо-данные: вымышленные гости для показа.</span>
+        <button type="button" class="link-btn" data-demo-clear>Убрать демо-данные</button>
+      </div>
+
+      <!-- Заявки -->
+      <section class="page" data-page="requests">
+        <header class="page__head">
+          <div><h2>Заявки</h2><p data-req-sub>Брони, доставка и праздники с сайта и по телефону</p></div>
+          <button class="btn btn--primary" type="button" data-new-request><svg><use href="#i-plus"/></svg>Новая заявка</button>
+        </header>
+        <div class="filters">
+          <div class="seg" role="tablist" aria-label="Статус" data-filter="status">
+            <button type="button" data-v="active" aria-pressed="true">В работе</button>
+            <button type="button" data-v="new" aria-pressed="false">Новые</button>
+            <button type="button" data-v="confirmed" aria-pressed="false">Подтверждены</button>
+            <button type="button" data-v="done" aria-pressed="false">Выполнены</button>
+            <button type="button" data-v="canceled" aria-pressed="false">Отменены</button>
+            <button type="button" data-v="all" aria-pressed="false">Все</button>
+          </div>
+          <label class="select-wrap"><span class="sr">Тип</span>
+            <select data-filter-type>
+              <option value="all">Все типы</option>
+              <option value="booking">Бронь стола</option>
+              <option value="delivery">Доставка</option>
+              <option value="event">Праздник</option>
+            </select>
+          </label>
+          <input class="search" type="search" placeholder="Имя или телефон" data-search aria-label="Поиск по имени или телефону">
+        </div>
+        <div class="table-wrap">
+          <table class="table" data-req-table>
+            <thead><tr><th>Создана</th><th>Тип</th><th>Гость</th><th>Когда</th><th>Детали</th><th>Статус</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <div class="empty" data-req-empty hidden></div>
+        </div>
+      </section>
+
+      <!-- Меню -->
+      <section class="page" data-page="menu" hidden>
+        <header class="page__head">
+          <div><h2>Меню</h2><p data-menu-sub>Изменения появятся на сайте после сохранения</p></div>
+          <div class="head-actions">
+            <span class="save-state" data-menu-state></span>
+            <button class="btn btn--primary" type="button" data-menu-save disabled>Сохранить меню</button>
+          </div>
+        </header>
+        <div class="menu-edit">
+          <nav class="cats" data-cats aria-label="Разделы меню"></nav>
+          <div class="cat-panel" data-cat-panel></div>
+        </div>
+      </section>
+
+      <!-- Гости -->
+      <section class="page" data-page="guests" hidden>
+        <header class="page__head">
+          <div><h2>Гости</h2><p>Собираются из заявок по номеру телефона</p></div>
+          <input class="search" type="search" placeholder="Имя или телефон" data-guest-search aria-label="Поиск гостя">
+        </header>
+        <div class="table-wrap">
+          <table class="table" data-guest-table>
+            <thead><tr><th>Гость</th><th>Заявок</th><th>Пришли</th><th>Последняя</th><th>Метка</th><th>Заметка</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <div class="empty" data-guest-empty hidden></div>
+        </div>
+      </section>
+
+      <!-- Статистика -->
+      <section class="page" data-page="stats" hidden>
+        <header class="page__head">
+          <div><h2>Статистика</h2><p>За последние 14 дней</p></div>
+        </header>
+        <div class="stats" data-stats></div>
+      </section>
+    </main>
+
+    <nav class="tabbar" aria-label="Разделы">
+      <a href="#requests" data-nav="requests"><svg><use href="#i-inbox"/></svg>Заявки<em data-new-count hidden></em></a>
+      <a href="#menu" data-nav="menu"><svg><use href="#i-menu"/></svg>Меню</a>
+      <a href="#guests" data-nav="guests"><svg><use href="#i-users"/></svg>Гости</a>
+      <a href="#stats" data-nav="stats"><svg><use href="#i-chart"/></svg>Статистика</a>
+    </nav>
+  </div>
+
+  <!-- Панель заявки -->
+  <div class="drawer" data-drawer hidden>
+    <div class="drawer__shade" data-drawer-close></div>
+    <form class="drawer__panel" data-drawer-form aria-labelledby="drawer-title">
+      <header><h3 id="drawer-title" data-drawer-title>Заявка</h3><button type="button" class="icon-btn" data-drawer-close aria-label="Закрыть"><svg><use href="#i-close"/></svg></button></header>
+      <div class="drawer__body">
+        <div class="status-row" data-status-row></div>
+        <div class="grid2">
+          <label class="field"><span>Тип</span>
+            <select name="type"><option value="booking">Бронь стола</option><option value="delivery">Доставка</option><option value="event">Праздник</option></select>
+          </label>
+          <label class="field"><span>Гостей</span><input name="guests" type="number" min="0" max="200" inputmode="numeric"></label>
+          <label class="field"><span>Имя</span><input name="name" required maxlength="80"></label>
+          <label class="field"><span>Телефон</span><input name="phone" type="tel" required maxlength="18" placeholder="+7 900 000-00-00"></label>
+          <label class="field"><span>Дата</span><input name="date" type="date"></label>
+          <label class="field"><span>Время</span><input name="time" type="time"></label>
+        </div>
+        <label class="field"><span>Детали</span><textarea name="details" rows="3" maxlength="600"></textarea></label>
+        <label class="field"><span>Заметка администратора</span><textarea name="note" rows="2" maxlength="600" placeholder="Видна только в CRM"></textarea></label>
+        <p class="meta" data-drawer-meta></p>
+        <p class="form-error" data-drawer-error role="alert"></p>
+      </div>
+      <footer>
+        <button type="button" class="btn btn--ghost danger" data-drawer-delete><svg><use href="#i-trash"/></svg>Удалить</button>
+        <a class="btn btn--ghost" data-drawer-call href="#"><svg><use href="#i-phone"/></svg>Позвонить</a>
+        <button type="submit" class="btn btn--primary">Сохранить</button>
+      </footer>
+    </form>
+  </div>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
