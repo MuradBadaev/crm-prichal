@@ -73,7 +73,7 @@ async function loadRequests(silent) {
   try {
     const { requests } = await api("/api/requests");
     state.requests = requests;
-    if (!requests.length && !localStorage.getItem("prichal-crm-seeded")) {
+    if (!requests.some((r) => r.source === "demo") && requests.length < 5 && !localStorage.getItem("prichal-crm-seeded")) {
       localStorage.setItem("prichal-crm-seeded", "1");
       await api("/api/demo", { method: "POST", body: { action: "seed" } });
       return loadRequests(silent);
