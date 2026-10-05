@@ -15,7 +15,7 @@ function demoRows() {
   const rows = [];
   const now = Date.now();
   for (let i = 0; i < 30; i++) {
-    const dayAgo = Math.floor((i * 13) % 14);
+    const dayAgo = [0, 0, 0, 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 6, 6, 6, 6, 7, 8, 8, 9, 10, 10, 11, 12, 12, 13, 2, 5, 9][i];
     const created = new Date(now - dayAgo * 86400000 - ((i * 37) % 600) * 60000);
     const type = i % 7 === 0 ? "event" : i % 3 === 0 ? "delivery" : "booking";
     const guestIdx = i % 11 < 4 ? i % 4 : i; // несколько постоянных гостей
@@ -25,7 +25,7 @@ function demoRows() {
     rows.push({
       type,
       name: pick(NAMES, guestIdx),
-      phone: `+79990001${String(10 + (guestIdx % 90)).padStart(2, "0")}`,
+      phone: `+7999000${String(1100 + guestIdx)}`,
       date: type === "delivery" ? "" : visit.toISOString().slice(0, 10),
       time: type === "delivery" ? "" : pick(["13:00", "18:30", "19:00", "20:00", "21:30"], i),
       guests: type === "event" ? 12 + (i % 15) : type === "booking" ? 2 + (i % 5) : 0,

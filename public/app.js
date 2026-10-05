@@ -315,7 +315,9 @@ function renderStats() {
   const st = by(recent, "status"), tp = by(recent, "type");
   const closed = (st.done || 0) + (st.canceled || 0);
   const conv = closed ? Math.round(((st.done || 0) / closed) * 100) : 0;
-  const guestsSum = recent.filter((r) => r.status !== "canceled").reduce((s, r) => s + (r.guests || 0), 0);
+  const today = dayKey(new Date().toISOString());
+  const upcoming = state.requests.filter((r) => r.date && r.date >= today && ["new", "confirmed"].includes(r.status));
+  const guestsSum = upcoming.reduce((s, r) => s + (r.guests || 0), 0);
   const perDay = days.map((d) => ({ d, rows: recent.filter((r) => dayKey(r.createdAt) === d) }));
   const max = Math.max(1, ...perDay.map((x) => x.rows.length));
   const COL = { booking: "var(--sea-600)", delivery: "var(--wood)", event: "#7A5AA6" };
@@ -326,7 +328,7 @@ function renderStats() {
     <div class="card kpi"><h3>Заявок</h3><b>${recent.length}</b><span>${diff === null ? "за 14 дней" : `${diff >= 0 ? "+" : ""}${diff}% к прошлым 14 дням`}</span></div>
     <div class="card kpi"><h3>Ждут ответа</h3><b>${st.new || 0}</b><span>новые, без звонка</span></div>
     <div class="card kpi"><h3>Пришли</h3><b>${conv}%</b><span>из закрытых заявок</span></div>
-    <div class="card kpi"><h3>Гостей ожидается</h3><b>${guestsSum}</b><span>по броням и праздникам</span></div>
+    <div class="card kpi"><h3>Гостей ожидается</h3><b>${guestsSum}</b><span>${upcoming.length} ${plural(upcoming.length, "бронь", "брони", "броней")} на сегодня и дальше</span></div>
     <div class="card card--wide"><h3>Заявки по дням</h3>
       <div class="bars" role="img" aria-label="Заявки по дням за 14 дней">${perDay.map(({ d, rows }) => {
         const h = (rows.length / max) * 100;

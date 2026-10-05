@@ -163,6 +163,7 @@ input::placeholder, textarea::placeholder { color: var(--ink-3); }
 .cat-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
 .cat-panel__head { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; padding: 16px; border-bottom: 1px solid var(--line); }
 .cat-panel__head .field:first-child { flex: 1 1 220px; }
+.cat-panel__head select { min-width: 150px; }
 .items { list-style: none; margin: 0; padding: 0; }
 .item { display: grid; grid-template-columns: 1fr 1.4fr 100px 110px auto; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--line-soft); align-items: center; }
 .item.is-hidden input { color: var(--ink-3); text-decoration: line-through; }
